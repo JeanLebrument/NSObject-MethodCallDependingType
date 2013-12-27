@@ -1,4 +1,4 @@
-NSObject-MethodCallDependingType
+Category NSObject+MethodCallDependingType
 ================================
 
 ### Summary
