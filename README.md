@@ -104,8 +104,6 @@ Result:
 
 ### How to use it ?
 
-#### 1. How to init ?  
-
 ##### Two ways to init the category:
 
 ######      ⇒ First: The category parses the method nameshe category parses the method names
@@ -127,7 +125,7 @@ Be carreful, you can set your own dictionnary parsed with method names. But if t
 - (void)setMethodsForRouting:(NSDictionary *)dictionnary
 ```
 
-#### Protocol
+##### Protocol
 
 String wich permits to identify if a method name need to be parsed.
 
@@ -136,16 +134,3 @@ By default the string "protocol" value is **"DependingOn"** but you can set anot
 ```objectivec
 - (void)setProtocol:(NSString *)protocol
 ```
-
-#### 2. How to add in a view controller ?
-
-How to add the instanced object in a view controller
-
-#### 3. How to implement ?
-
-How to implement the class  
-
-#### 4. How to remove ?
-
-How to remove the instanced object from the view controller
-
