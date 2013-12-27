@@ -106,7 +106,7 @@ Result:
 
 ##### Two ways to init the category:
 
-######      ⇒ First: The category parses the method nameshe category parses the method names
+######      ⇒ First: The category parses the method names 
 You don't have to parse the method names, the category do this for you by using this method:
 
 ```objectivec
@@ -117,7 +117,7 @@ You don't have to parse the method names, the category do this for you by using 
  */
 - (void)constructMethodsListForRouting:(NSArray *)typesList FromClass:(Class)className;
 ```
-######      ⇒ Second: The category parses the method namesSet a Dictionnary with the method names already parsed
+######      ⇒ Second: Set a Dictionnary with the method names already parsed
 
 Be carreful, you can set your own dictionnary parsed with method names. But if the dictionnary doesn't respect the architecture the category will no longer work.
 
