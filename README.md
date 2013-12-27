@@ -77,14 +77,14 @@ A first NSDictionnary "methodsForRouting" contains:
 
 To be parsed a method name must respect the following nomenclature:
 
-1. An identical prefix for all the specifics method:
-    Ex: createMenu
+1. An identical prefix for all the specifics method:  
+    ⇒ Ex: createMenu
 2. A string which define the protocol: (Default is "DependingOn" but can be modified with the protocol setter from the category)  
-    Ex: DependingOn
-3. A **"type key"**
-    Ex: KIOSVersion
-4. A **"type value"**
-    Ex: KIOS6
+    ⇒ Ex: DependingOn
+3. A **"type key"**  
+    ⇒ Ex: KIOSVersion
+4. A **"type value"**  
+    ⇒ Ex: KIOS6
 
 Result:
 
