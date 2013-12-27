@@ -64,8 +64,8 @@ With the category:
 
 The method names are stored and sorted depending on two types.
 
-* **"type key"**
-* **"type value"**
+* **"type key"** _(could be interpreted like the type of an Enum)_
+* **"type value"** _(could be interpreted like a field of an Enum)_
 
 A first NSDictionnary "methodsForRouting" contains:
 * key: **"type key"**
@@ -73,7 +73,12 @@ A first NSDictionnary "methodsForRouting" contains:
                 ⇒ A common name of the specific methods (prefix)  
                 ⇒ An array of the different **"type value"** which exists for **"type key"** (suffix)
 
-#### How the category parse a method name ?
+#### Why use a **"type key"** and a **"type value"** ?
+
+* Optimiszed by limiting the number of loop iteration to find a desired method.
+* Use the same **"type value"** but for a different **"type key"**.
+
+#### How the category parses a method name ?
 
 To be parsed a method name must respect the following nomenclature:
 
@@ -96,23 +101,43 @@ Result:
 - (void)createMenuDependingOnKIOSVersionKIOS6:(Whatever *)params;
 ```
 
-#### 1. Construct the dic
-
-There are two ways to use this category
-
-#### 1. Parse the method names of its own class
-
-
-
-#### 2. Passing an NSMutableDictonnary which contains the method names already sorted
 
 ### How to use it ?
 
-A short paragraph to explain how to use the class.
-
 #### 1. How to init ?  
 
-How to init the class
+#### Two ways to init the category:
+
+1. The category parses the method names
+
+You don't have to parse the method names, the category do this for you by using this method:
+
+```objectivec
+/*
+ ** @parameter: typeList - Array containing the different types of key that the user need to route his methods.
+ ** @parameter: className - The class to get the method names.
+ ** Store the class methods name which contains a type from the "typesList" given in paramter
+ */
+- (void)constructMethodsListForRouting:(NSArray *)typesList FromClass:(Class)className;
+```
+
+2. Set a Dictionnary with the method names already parsed
+
+Be carreful, you can set your own dictionnary parsed with method names. But if the dictionnary doesn't respect the architecture the category will no longer work.
+
+```objectivec
+- (void)setMethodsForRouting:(NSDictionary *)dictionnary
+```
+
+#### Protocol
+
+String wich permits to identify if a method name need to be parsed.
+
+By default the string "protocol" value is **"DependingOn"** but you can set another protocol value by using this setter:
+
+```objectivec
+- (void)setProtocol:(NSString *)protocol
+```
 
 #### 2. How to add in a view controller ?
 
