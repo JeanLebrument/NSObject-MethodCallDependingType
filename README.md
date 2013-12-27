@@ -93,7 +93,7 @@ Result:
 
 // OR
 
-- (void)createMenuDependingOnKIOSVersionKIOS6:(Whatever object)params;
+- (void)createMenuDependingOnKIOSVersionKIOS6:(Whatever *)params;
 ```
 
 #### 1. Construct the dic
