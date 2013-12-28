@@ -11,7 +11,7 @@ The category stores the method names of each method of the class which respects 
 
 #### Exemple
 
-Depending on defines you have to call different methods with a very similar goal.
+Depending on some defines you have to call different methods with a very similar goal.
 
 ```objectivec
 #define kiOSVersion @"KIOSVersion"
@@ -67,7 +67,7 @@ The method names are stored and sorted depending on two types.
 * **"type key"** _(could be interpreted like the type of an Enum)_
 * **"type value"** _(could be interpreted like a field of an Enum)_
 
-A first NSDictionnary "methodsForRouting" contains:
+A first NSDictionnary property "methodsForRouting" which contains:
 * key: **"type key"**
 * value: an intance of the class **"MethodsForTypeKey"**:  
                 ⇒ A common name of the specific methods (prefix)  
@@ -75,7 +75,7 @@ A first NSDictionnary "methodsForRouting" contains:
 
 #### Why use a **"type key"** and a **"type value"** ?
 
-* Optimiszed by limiting the number of loop iteration to find a desired method.
+* Optimized by limiting the number of loop iteration to find a desired method.
 * Use the same **"type value"** but for a different **"type key"**.
 
 #### How the category parses a method name ?
@@ -84,7 +84,7 @@ To be parsed a method name must respect the following nomenclature:
 
 1. An identical prefix for all the specifics method:  
     ⇒ Ex: createMenu
-2. A string which define the protocol: (Default is "DependingOn" but can be modified with the protocol setter from the category)  
+2. A string which defines the protocol: (Default is "DependingOn" but can be modified with the protocol setter from the category)  
     ⇒ Ex: DependingOn
 3. A **"type key"**  
     ⇒ Ex: KIOSVersion
@@ -119,7 +119,7 @@ You don't have to parse the method names, the category do this for you by using 
 ```
 ######      ⇒ Second: Set a Dictionnary with the method names already parsed
 
-Be carreful, you can set your own dictionnary parsed with method names. But if the dictionnary doesn't respect the architecture the category will no longer work.
+Be careful, you can set your own dictionnary parsed with method names. But if the dictionnary doesn't respect the architecture explained above, the category will no longer work.
 
 ```objectivec
 - (void)setMethodsForRouting:(NSDictionary *)dictionnary
@@ -127,7 +127,7 @@ Be carreful, you can set your own dictionnary parsed with method names. But if t
 
 ##### Protocol
 
-String wich permits to identify if a method name need to be parsed.
+String which permits to identify if a method name needs to be parsed.
 
 By default the string "protocol" value is **"DependingOn"** but you can set another protocol value by using this setter:
 
