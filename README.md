@@ -3,11 +3,11 @@ Category NSObject+MethodCallDependingType
 
 ### Summary
 
-This category permits to route method for a specific using depending a type.
+This category permits to route the call of a method to a specific method depending on a given type.
 
 It goal is to avoid "switch case" or consecutive "if / else if / else" to call a specific method depending on the value of an enum or a #define.
 
-The category store the method names of each method of the class which respects a specified "protocol".
+The category stores the method names of each method of the class which respects a specified "protocol".
 
 #### Exemple
 
