@@ -5,7 +5,7 @@ Category NSObject+MethodCallDependingType
 
 This category permits to route the call of a method to a specific method depending on a given type.
 
-It goal is to avoid "switch case" or consecutive "if / else if / else" to call a specific method depending on the value of a an attribute or variable.
+The goal is to avoid "switch case" or consecutive "if / else if / else" to call a specific method depending on the value of a an attribute or variable.
 
 The category stores the method names of each method of the class which respects a specified "protocol".
 
@@ -92,7 +92,7 @@ To be parsed a method name must respect the following nomenclature:
 3. A **"type key"**  
     ⇒ Ex: @"ColorMenu"
 4. A **"type value"**  
-    ⇒ Ex: @"Blue"
+    ⇒ Ex: @"Red"
 
 Result:
 
@@ -135,7 +135,7 @@ String which permits to identify if a method name needs to be parsed.
 By default the string "protocol" value is **"DependingOn"** but you can set another protocol value by using this setter:
 
 ```objectivec
-- (void)setProtocol:(NSString *)protocol
+- (void)setProtocol:(NSString *)newProtocol
 ```
 
 ### Licence
