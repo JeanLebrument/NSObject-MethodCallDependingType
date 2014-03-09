@@ -5,19 +5,22 @@ Category NSObject+MethodCallDependingType
 
 This category permits to route the call of a method to a specific method depending on a given type.
 
-It goal is to avoid "switch case" or consecutive "if / else if / else" to call a specific method depending on the value of an enum or a #define.
+It goal is to avoid "switch case" or consecutive "if / else if / else" to call a specific method depending on the value of a an attribute or variable.
 
 The category stores the method names of each method of the class which respects a specified "protocol".
 
 #### Exemple
 
-Depending on some defines you have to call different methods with a very similar goal.
+Depending on a value you have to call different methods with a very similar goal.
 
 ```objectivec
-#define kiOSVersion @"KIOSVersion"
+@interface MenuViewController : UIViewController
+{
+    NSString *desiredColor; // Value could be @"Red" or @"Blue"
+    ...
+}
 
-#define kIOS6 @"KIOS6"
-#define kIOS7 @"KIOS7"
+@end
 
 ```
 
@@ -27,10 +30,10 @@ Without use this category you should do this way:
 ...
 - (void)viewDidLoad
 {
-    if ([self.myIOSVersion isEqualToString:kIOS6])
-        [self createMenuForiOS6WithTitle:self.menuTitle];
-    else if ([self.myIOSVersion isEqualToString:kIOS7])
-        [self createMenuForiOS7WithTitle:self.menuTitle];
+    if ([self.desiredColor isEqualToString:@"Red"])
+        [self constructRedMenu];
+    else if ([self.desiredColor isEqualToString:@"Blue"])
+        [self constructBlueMenu];
 }
 ...
 ```
@@ -44,17 +47,17 @@ With the category:
 - (void)viewDidLoad
 {
     // Parse the name of each methods wich contains the string @"KIOSVersion" and store them
-    [test constructMethodsListForRouting:@[kiOSVersion] FromClass:[self class]];
+    [test constructMethodsListForRouting:@[@"ColorMenu"] FromClass:[self class]];
     
-    [test callRoutedMethod:@"createMenu" withTypeKey:kiOSVersion andTypeValue:kIOS6 andParameters:self.menuTitle];
+    [test callRoutedMethod:@"createMenu" withTypeKey:@"ColorMenu" andTypeValue:self.desiredColor andParameters:nil];
 }
 
-- (void)createMenuDependingOnKIOSVersionKIOS6:(NSString *)title
+- (void)createMenuDependingOnColorMenuRed
 {
     // do stuff
 }
 
-- (void)createMenuDependingOnKeyIOSVersionKIOS6:(NSString *)title
+- (void)createMenuDependingOnColorMenuBlue
 {
     // do stuff
 }
@@ -62,10 +65,10 @@ With the category:
 
 ### How does it work ?
 
-The method names are stored and sorted depending on two types.
+The method names are stored depending on two types.
 
-* **"type key"** _(could be interpreted like the type of an Enum)_
-* **"type value"** _(could be interpreted like a field of an Enum)_
+* **"type key"**  
+* **"type value"** _(value for the type)_
 
 A first NSDictionnary property "methodsForRouting" which contains:
 * key: **"type key"**
@@ -87,18 +90,18 @@ To be parsed a method name must respect the following nomenclature:
 2. A string which defines the protocol: (Default is "DependingOn" but can be modified with the protocol setter from the category)  
     ⇒ Ex: DependingOn
 3. A **"type key"**  
-    ⇒ Ex: KIOSVersion
+    ⇒ Ex: @"ColorMenu"
 4. A **"type value"**  
-    ⇒ Ex: KIOS6
+    ⇒ Ex: @"Blue"
 
 Result:
 
 ```objectivec
-- (void)createMenuDependingOnKIOSVersionKIOS6;
+- (void)createMenuDependingOnColorMenuRed;
 
 // OR
 
-- (void)createMenuDependingOnKIOSVersionKIOS6:(Whatever *)params;
+- (void)createMenuDependingOnColorMenuRed:(Whatever *)params;
 ```
 
 
