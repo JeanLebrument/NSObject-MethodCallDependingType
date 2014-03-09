@@ -68,7 +68,7 @@ With the category:
 The method names are stored depending on two types.
 
 * **"type key"**  
-* **"type value"** _(value for the type)_
+* **"type value"**
 
 A first NSDictionnary property "methodsForRouting" which contains:
 * key: **"type key"**
