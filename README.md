@@ -46,7 +46,7 @@ With the category:
 
 - (void)viewDidLoad
 {
-    // Parse the name of each methods wich contains the string @"KIOSVersion" and store them
+    // Parse the name of each methods wich contains the string @"ColorMenu" and store them
     [test constructMethodsListForRouting:@[@"ColorMenu"] FromClass:[self class]];
     
     [test callRoutedMethod:@"createMenu" withTypeKey:@"ColorMenu" andTypeValue:self.desiredColor andParameters:nil];
